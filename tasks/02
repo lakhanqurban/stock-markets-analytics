@@ -1,0 +1,59 @@
+# Task 2 Solution (2026 Cohort)
+
+## Question 1: Withdrawn IPOs by Company Type
+
+**Answer:** Acquisition Corp with **$499.99 million**
+
+Total withdrawn IPO value by company type:
+
+- Acquisition Corp: $499.99M
+- Inc.: $351.00M
+- Holdings: $311.66M
+- Other: $290.45M
+- Limited: $219.25M
+- Technologies: $184.90M
+- Group: $56.58M
+
+## Question 2: Median Sharpe Ratio for 2025 IPOs
+
+**Answer:** **-0.0373**
+
+- Analyzed 131 stocks with data on 2026-09-11
+- Risk-free rate: 5.0%
+- Growth period: 252 trading days
+- Volatility window: 30 days
+
+## Question 3: Optimal Holding Period (1-12 months)
+
+**Answer:** **1 month** (median growth = 0.9401)
+
+Median growth by holding period:
+
+- 1 month: 0.9401
+- 2 months: 0.8930
+- 3 months: 0.8272
+- 4 months: 0.7304
+- 5 months: 0.6909
+- 6 months: 0.7009
+- 7 months: 0.6600
+- 8 months: 0.6035
+- 9 months: 0.5803
+- 10 months: 0.5333
+- 11 months: 0.4818
+- 12 months: 0.4918
+
+All median returns are < 1.0 (negative median growth), with 1 month being the least negative.
+
+## Question 4: RSI-Based Trading Strategy
+
+**Answer:** **65.81 $ thousands** (net income)
+
+- RSI threshold: < 30 (oversold)
+- Period: 2000-01-01 to 2025-06-01
+- Total signals: 5,206 trades
+- Average 30-day return: 1.26%
+- Win rate: 55.13%
+- Investment per signal: $1,000
+- Total net income: $65,805.59 = **65.81 $ thousands**
+
+---
