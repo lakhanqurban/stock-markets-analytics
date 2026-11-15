@@ -1,0 +1,7 @@
+{
+  "stop_loss": null,
+  "max_hold": null,
+  "regime_min": 0.0178002822079937,
+  "selected_on": "valid",
+  "valid_sharpe": 1.629
+}

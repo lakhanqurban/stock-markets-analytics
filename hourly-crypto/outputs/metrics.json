@@ -1,0 +1,61 @@
+{
+  "rows": {
+    "train": 965141,
+    "valid": 367887,
+    "test": 505512
+  },
+  "n_features": 92,
+  "models": {
+    "logreg": {
+      "params": {
+        "C": 0.1
+      },
+      "val_auc": 0.5071550869571675,
+      "test_auc": 0.5120212251989265,
+      "threshold": 0.5,
+      "val_precision": 0.5327122818288896,
+      "test_precision": 0.48464518567513937,
+      "test_signal_share": 0.020935210242289008,
+      "test_n_signals": 10583
+    },
+    "dt": {
+      "params": {
+        "max_depth": 12,
+        "min_samples_leaf": 200
+      },
+      "val_auc": 0.515440520739431,
+      "test_auc": 0.5074224980985527,
+      "threshold": 0.67,
+      "val_precision": 0.5135326835023456,
+      "test_precision": 0.46982609331934927,
+      "test_signal_share": 0.4055195524537499,
+      "test_n_signals": 204995
+    },
+    "rf": {
+      "params": {
+        "max_depth": 13,
+        "min_samples_leaf": 50
+      },
+      "val_auc": 0.5239954007361044,
+      "test_auc": 0.5289908485084274,
+      "threshold": 0.65,
+      "val_precision": 0.6193907631837536,
+      "test_precision": 0.5994719969828399,
+      "test_signal_share": 0.02098070866764785,
+      "test_n_signals": 10606
+    },
+    "xgb": {
+      "params": {
+        "max_depth": 6,
+        "learning_rate": 0.05
+      },
+      "val_auc": 0.523581128137692,
+      "test_auc": 0.5247624271768057,
+      "threshold": 0.8,
+      "val_precision": 0.5478122874631602,
+      "test_precision": 0.5449809402795426,
+      "test_signal_share": 0.04670512272705692,
+      "test_n_signals": 23610
+    }
+  }
+}

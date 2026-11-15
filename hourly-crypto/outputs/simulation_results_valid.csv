@@ -1,0 +1,7 @@
+,total_return,cagr,sharpe,max_drawdown,n_trades,trades_per_day
+sim1_rf_long,0.7025,0.7031,1.274,-0.2743,357.0,0.98
+sim2_rf_probasize,0.7058,0.7064,1.278,-0.2745,357.0,0.98
+sim3_rf_longs,0.0345,0.0346,0.444,-0.6839,43.0,0.12
+sim4_rf_advanced,0.851,0.8517,1.426,-0.3045,144.0,0.39
+sim5_rf_exact,0.8558,0.8566,1.629,-0.2863,122.0,0.33
+benchmark_btc,0.7018,0.7025,1.295,-0.3097,1.0,0.0
