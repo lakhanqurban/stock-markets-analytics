@@ -4,11 +4,11 @@
 ![pandas 3.0](https://img.shields.io/badge/pandas-3.0-150458?logo=pandas&logoColor=white)
 ![scikit-learn 1.9](https://img.shields.io/badge/scikit--learn-1.9-F7931E?logo=scikit-learn&logoColor=white)
 ![XGBoost 3.4](https://img.shields.io/badge/XGBoost-3.4-087CC1)
-![Jupyter notebook executed](<https://img.shields.io/badge/Jupyter-executed%20✓-F37726?logo=jupyter&logoColor=white>)
+![Jupyter notebook executed](https://img.shields.io/badge/Jupyter-executed%20✓-F37726?logo=jupyter&logoColor=white)
 ![dataset rows](https://img.shields.io/badge/rows-1.87M-blue)
 ![symbols](https://img.shields.io/badge/symbols-42-orange)
 ![history span](https://img.shields.io/badge/span-2021%E2%80%932026-informational)
-![test return vs BTC](<https://img.shields.io/badge/test%20return%20vs%20BTC-%2B48.5%25%20vs%20%E2%88%9237.4%25-brightgreen>)
+![test return vs BTC](https://img.shields.io/badge/test%20return%20vs%20BTC-%2B48.5%25%20vs%20%E2%88%9237.4%25-brightgreen)
 
 **An end-to-end machine-learning trading project** built for the
 [Stock Market Analytics Zoomcamp 2026](https://github.com/DataTalksClub/stock-markets-analytics-zoomcamp):
@@ -23,15 +23,15 @@ trading costs — including an exact iterative simulation with reinvestment.
 **Test set (2025-07-01 → 2026-11-15) — a bear market where buy-and-hold BTC
 lost −37.4%:**
 
-| Strategy                                   | Total return      | CAGR              | Sharpe           | Max DD            |
-| ------------------------------------------ | ----------------- | ----------------- | ---------------- | ----------------- |
-| **sim3 long/short (new strategy)**   | **+48.5%**  | **+33.4%**  | **0.77**   | −43.3%           |
-| sim5 exact · no-regime ablation           | +18.8%            | +13.4%            | 0.57             | −37.6%           |
-| sim1 long-only (daily)                     | +12.5%            | +8.9%             | 0.44             | −38.3%           |
-| sim2 proba-sized (daily)                   | +12.5%            | +8.9%             | 0.44             | −38.3%           |
-| sim4 top-5 proba (daily, vector)           | +8.8%             | +6.3%             | 0.36             | −38.2%           |
-| sim5 exact · valid-selected regime filter | −11.0%           | −8.1%            | −0.16           | −37.6%           |
-| **benchmark: buy & hold BTC**        | **−37.4%** | **−28.9%** | **−0.63** | **−53.8%** |
+| Strategy | Total return | CAGR | Sharpe | Max DD |
+|---|---|---|---|---|
+| **sim3 long/short (new strategy)** | **+48.5%** | **+33.4%** | **0.77** | −43.3% |
+| sim5 exact · no-regime ablation | +18.8% | +13.4% | 0.57 | −37.6% |
+| sim1 long-only (daily) | +12.5% | +8.9% | 0.44 | −38.3% |
+| sim2 proba-sized (daily) | +12.5% | +8.9% | 0.44 | −38.3% |
+| sim4 top-5 proba (daily, vector) | +8.8% | +6.3% | 0.36 | −38.2% |
+| sim5 exact · valid-selected regime filter | −11.0% | −8.1% | −0.16 | −37.6% |
+| **benchmark: buy & hold BTC** | **−37.4%** | **−28.9%** | **−0.63** | **−53.8%** |
 
 **Validation set (2024-07 → 2025-07, a bull window, BTC +70.2%):** the exact
 simulation with the validation-selected config returned **+85.6% (Sharpe 1.63)**
@@ -60,12 +60,12 @@ keeps it ≥2%).
 - [Architecture](#architecture)
 - [1. Problem statement](#1-problem-statement)
 - [2. Data sources](#2-data-sources)
-- [3. Dataset &amp; features](#3-dataset--features-40-numeric--2-dummy-sets)
+- [3. Dataset & features](#3-dataset--features-40-numeric--2-dummy-sets)
 - [4. Modeling](#4-modeling)
-- [5. Strategies &amp; results](#5-strategies--results-all-costs--10-bps-fee--5-bps-slippage-per-side)
-- [6. Key findings &amp; debugging](#6-key-findings--debugging-things-that-went-wrong-and-why)
+- [5. Strategies & results](#5-strategies--results-all-costs--10-bps-fee--5-bps-slippage-per-side)
+- [6. Key findings & debugging](#6-key-findings--debugging-things-that-went-wrong-and-why)
 - [7. Repository layout](#7-repository-layout)
-- [8. Reproducing, automation &amp; Docker](#8-reproducing-automation--docker)
+- [8. Reproducing, automation & Docker](#8-reproducing-automation--docker)
 - [9. Rubric mapping](#9-rubric-mapping)
 
 ## What is this?
@@ -144,9 +144,9 @@ flowchart LR
 
 **Two operating modes** (course rubric requires both):
 
-| Mode         | Command                                      | Behaviour                                                                                                  |
-| ------------ | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| *file*     | `python -m src.pipeline --source file`     | runs purely from local parquet files — fast, reproducible, zero API calls (grader/CI rerun)               |
+| Mode | Command | Behaviour |
+|---|---|---|
+| *file* | `python -m src.pipeline --source file` | runs purely from local parquet files — fast, reproducible, zero API calls (grader/CI rerun) |
 | *download* | `python -m src.pipeline --source download` | first *incrementally* fetches only missing rows from Binance/Yahoo (resume-safe), then runs the workflow |
 
 ---
@@ -170,11 +170,11 @@ full pipeline on **hourly bars for 42 coins over ~6 years (1.87M rows)**:
 
 ## 2. Data sources
 
-| Source                                                       | What                                                           | Records     | Notes                                                                                               |
-| ------------------------------------------------------------ | -------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------- |
-| **Binance USDT-M futures REST** (`fapi.binance.com`) | 1h klines (OHLCV, trades, taker flow) for 42 pure-crypto perps | 1,865,048   | public, no key; incremental resume from last stored timestamp                                       |
-| **Binance funding rates** (`/fapi/v1/fundingRate`)   | 8h (some 4h) funding events, full history since 2021           | ~252,000    | as-of merged onto the hourly grid                                                                   |
-| **Yahoo Finance** (yfinance): SPY, ^VIX, DX-Y.NYB      | cross-asset risk regime (equity momentum, vol, dollar)         | 1,474 daily | lecture data source; published daily bars made available **D+1 00:00 UTC** to avoid lookahead |
+| Source | What | Records | Notes |
+|---|---|---|---|
+| **Binance USDT-M futures REST** (`fapi.binance.com`) | 1h klines (OHLCV, trades, taker flow) for 42 pure-crypto perps | 1,865,048 | public, no key; incremental resume from last stored timestamp |
+| **Binance funding rates** (`/fapi/v1/fundingRate`) | 8h (some 4h) funding events, full history since 2021 | ~252,000 | as-of merged onto the hourly grid |
+| **Yahoo Finance** (yfinance): SPY, ^VIX, DX-Y.NYB | cross-asset risk regime (equity momentum, vol, dollar) | 1,474 daily | lecture data source; published daily bars made available **D+1 00:00 UTC** to avoid lookahead |
 
 Not used: Binance open-interest history (API only keeps ~30 days — verified
 empirically, which is why funding rates carry the derivatives signal).
@@ -183,30 +183,35 @@ empirically, which is why funding rates carry the derivatives signal).
 metal perps that Binance now lists (NVDAUSDT, XAUUSDT, …) are deliberately
 excluded; 3 delisted candidates (TON/EOS/MKR) are filtered at download time.
 
+**Features:** all 40 derived features (returns, volume/flow, volatility,
+momentum, calendar, funding, BTC-beta, cross-sectional, cross-asset macro) are
+described with their groups in [§3](#3-dataset--features-40-numeric--2-dummy-sets)
+and implemented in `src/transform.py::NUMERIC_FEATURES`.
+
 ## 3. Dataset & features (40 numeric + 2 dummy sets)
 
 Splits (chronological, no shuffle — future never leaks into training):
 
-| Split | Window             | Rows    |
-| ----- | ------------------ | ------- |
+| Split | Window | Rows |
+|---|---|---|
 | train | 2021-01 → 2024-06 | 965,141 |
 | valid | 2024-07 → 2025-06 | 367,887 |
-| test  | 2025-07 → 2026-11 | 505,512 |
+| test | 2025-07 → 2026-11 | 505,512 |
 
 Target class share ≈ 0.49 (balanced: half of coin-hours end 24h higher).
 
-| Group                      | Features                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------- |
-| Returns / candle shape (6) | `ret_1h`, `ret_24h`, `ret_168h`, `hl_range`, `body`, `body_sign`                |
-| Volume / flow (4)          | `vol_z24`, `taker_buy_ratio`, `vwap_dev_24`, `trades_z24`                           |
-| Volatility (4)             | `rv_24`, `rv_168`, `vol_of_vol`, `ret_skew_24`                                      |
-| Momentum (6)               | `rsi_14`, `rsi_48`, `macd_hist`, `dist_high_168`, `dist_low_168`, `price_z_168` |
-| Calendar (5)               | `hour_sin/cos`, `dow_sin/cos`, `log_days_listed`                                      |
-| Funding — new source (4)  | `funding_rate`, `funding_ma_24`, `funding_z_720`, `funding_pos`                     |
-| Market factor = BTC (4)    | `mkt_ret_24h`, `btc_rv_24`, `corr_btc_168`, `beta_btc_168`                          |
-| Cross-sectional (2)        | `xs_quote_share` (hourly volume share), `xs_ret_rank`                                   |
-| Cross-asset macro (5)      | `spy_ret_5d`, `spy_ret_20d`, `vix_log`, `vix_chg_5d`, `dxy_ret_10d`               |
-| Dummies (2 sets)           | `symbol` (42), `hour_bucket` (4×6h)                                                    |
+| Group | Features |
+|---|---|
+| Returns / candle shape (6) | `ret_1h`, `ret_24h`, `ret_168h`, `hl_range`, `body`, `body_sign` |
+| Volume / flow (4) | `vol_z24`, `taker_buy_ratio`, `vwap_dev_24`, `trades_z24` |
+| Volatility (4) | `rv_24`, `rv_168`, `vol_of_vol`, `ret_skew_24` |
+| Momentum (6) | `rsi_14`, `rsi_48`, `macd_hist`, `dist_high_168`, `dist_low_168`, `price_z_168` |
+| Calendar (5) | `hour_sin/cos`, `dow_sin/cos`, `log_days_listed` |
+| Funding — new source (4) | `funding_rate`, `funding_ma_24`, `funding_z_720`, `funding_pos` |
+| Market factor = BTC (4) | `mkt_ret_24h`, `btc_rv_24`, `corr_btc_168`, `beta_btc_168` |
+| Cross-sectional (2) | `xs_quote_share` (hourly volume share), `xs_ret_rank` |
+| Cross-asset macro (5) | `spy_ret_5d`, `spy_ret_20d`, `vix_log`, `vix_chg_5d`, `dxy_ret_10d` |
+| Dummies (2 sets) | `symbol` (42), `hour_bucket` (4×6h) |
 
 Also present: raw OHLCV + `btc_rv_24` (used by the regime filter).
 
@@ -225,12 +230,12 @@ source of truth used by training and the notebook.
   threshold **0.65** → test **precision 59.9%** at 2.1% signal share
   (base rate 48.6%), test AUC 0.529.
 
-| model        | val AUC         | test AUC        | thr            | test precision  |
-| ------------ | --------------- | --------------- | -------------- | --------------- |
-| logreg       | 0.507           | 0.512           | 0.50           | 48.5%           |
-| dt           | 0.515           | 0.507           | 0.67           | 47.0%           |
+| model | val AUC | test AUC | thr | test precision |
+|---|---|---|---|---|
+| logreg | 0.507 | 0.512 | 0.50 | 48.5% |
+| dt | 0.515 | 0.507 | 0.67 | 47.0% |
 | **rf** | **0.524** | **0.529** | **0.65** | **60.0%** |
-| xgb          | 0.524           | 0.525           | 0.80           | 54.5%           |
+| xgb | 0.524 | 0.525 | 0.80 | 54.5% |
 
 ## 5. Strategies & results (all costs = 10 bps fee + 5 bps slippage per side)
 
@@ -252,14 +257,14 @@ so the decision can never use the price it trades at).
 
 ### Validation (bull, BTC +70.2%)
 
-|                                              | total            | Sharpe         |
-| -------------------------------------------- | ---------------- | -------------- |
-| sim1                                         | +70.3%           | 1.27           |
-| sim2                                         | +70.6%           | 1.28           |
-| sim3                                         | +3.5%            | 0.44           |
-| sim4                                         | +85.1%           | 1.43           |
+| | total | Sharpe |
+|---|---|---|
+| sim1 | +70.3% | 1.27 |
+| sim2 | +70.6% | 1.28 |
+| sim3 | +3.5% | 0.44 |
+| sim4 | +85.1% | 1.43 |
 | **sim5 (selected: vol-regime filter)** | **+85.6%** | **1.63** |
-| benchmark BTC                                | +70.2%           | 1.30           |
+| benchmark BTC | +70.2% | 1.30 |
 
 ### Test (bear, BTC −37.4%)
 
@@ -309,6 +314,8 @@ hourly-crypto/
 │   ├── transform.py           one combined table, 40 features, targets
 │   ├── train.py               4 models, tuning, threshold rule, artifacts
 │   ├── simulate.py            4 vector sims + exact iterative sim + benchmark
+│   ├── monitor.py             health summary → monitor.html (+ Telegram)  [bonus]
+│   ├── broker.py              latest trades → Binance orders, dry-run      [bonus]
 │   └── pipeline.py            orchestrator (file | download mode) + latest trades
 ├── data/                      (git-ignored: raw/*.parquet, combined.parquet)
 ├── models/                    (git-ignored: fitted joblib bundles)
@@ -317,25 +324,28 @@ hourly-crypto/
 
 ### What each generated file means
 
-| Artifact                                        | Meaning                                                                  |
-| ----------------------------------------------- | ------------------------------------------------------------------------ |
-| `data/raw/*.parquet`                          | raw per-symbol klines + funding + macro (one file per symbol)            |
-| `data/combined.parquet`                       | **the one unified table** — 1.87M rows × 53 cols used everywhere |
-| `models/*.joblib`                             | the four fitted classifiers                                              |
-| `outputs/metrics.json`                        | per-model AUCs, chosen thresholds, precision                             |
-| `outputs/threshold_sweep.csv`                 | the custom decision rule: precision vs threshold                         |
-| `outputs/feature_importance.csv`              | RF/logreg feature rankings                                               |
-| `outputs/predictions_{valid,test}.parquet`    | row-level probabilities & predictions                                    |
-| `outputs/predictions_with_sims_*.parquet`     | same rows with sim1–sim4 P&L columns                                    |
-| `outputs/simulation_results_{valid,test}.csv` | the headline strategy tables                                             |
-| `outputs/equity_curves_*.parquet`             | daily growth-of-$1 curves (plotted in the notebook)                      |
-| `outputs/trades_exact_*.csv`                  | every trade of the exact simulation                                      |
-| `outputs/ticker_precision_*.csv`              | precision per coin — used to debug wrong predictions                    |
-| `outputs/strategy_config.json`                | sim5 config selected on validation                                       |
-| `outputs/latest_trades.csv`                   | **what to execute now**: newest hour's top-5 BUY signals           |
+| Artifact | Meaning |
+|---|---|
+| `data/raw/*.parquet` | raw per-symbol klines + funding + macro (one file per symbol) |
+| `data/combined.parquet` | **the one unified table** — 1.87M rows × 53 cols used everywhere |
+| `models/*.joblib` | the four fitted classifiers |
+| `outputs/metrics.json` | per-model AUCs, chosen thresholds, precision |
+| `outputs/threshold_sweep.csv` | the custom decision rule: precision vs threshold |
+| `outputs/feature_importance.csv` | RF/logreg feature rankings |
+| `outputs/predictions_{valid,test}.parquet` | row-level probabilities & predictions |
+| `outputs/predictions_with_sims_*.parquet` | same rows with sim1–sim4 P&L columns |
+| `outputs/simulation_results_{valid,test}.csv` | the headline strategy tables |
+| `outputs/equity_curves_*.parquet` | daily growth-of-$1 curves (plotted in the notebook) |
+| `outputs/trades_exact_*.csv` | every trade of the exact simulation |
+| `outputs/ticker_precision_*.csv` | precision per coin — used to debug wrong predictions |
+| `outputs/strategy_config.json` | sim5 config selected on validation |
+| `outputs/latest_trades.csv` | **what to execute now**: newest hour's top-5 BUY signals |
+| `outputs/monitor.html` | one-file dashboard snapshot written by `src/monitor.py` |
+| `outputs/orders_latest.json` | dry-run order list built by `src/broker.py` |
 
-Data files are **not committed** — re-download via the API, or upload
-`data/` to a shared drive and link it here: _(drive link: …)_.
+Data files are **never committed to GitHub** (project rule). They are fully
+re-downloadable from the public APIs with `python -m src.download`, or you can
+keep `data/` on a shared drive / database of your choice.
 
 ## 8. Reproducing, automation & Docker
 
@@ -355,6 +365,8 @@ python -m src.transform              # rebuild combined.parquet (~15s)
 python -m src.train                  # tune + predict (~9 min)
 python -m src.simulate --split valid # strategy-config selection
 python -m src.simulate --split test  # final report
+python -m src.monitor                # health summary -> outputs/monitor.html
+python -m src.broker                 # latest trades -> orders (dry run)
 
 # or open the notebook that calls all of the above
 jupyter notebook notebooks/01_end_to_end.ipynb
@@ -366,12 +378,31 @@ Verified end-to-end: the notebook executes cleanly in **~12.7 minutes**
 ### Scheduled run (cron)
 
 ```cron
-# daily at 01:15 UTC: refresh data, retrain, regenerate predictions & trades
+# daily at 01:15 UTC: refresh data, retrain, regenerate predictions & trades,
+# then push the health summary to Telegram (optional)
 15 1 * * * cd /path/to/hourly-crypto && /usr/bin/python3 -m src.pipeline --source download >> logs/pipeline.log 2>&1
+20 1 * * * cd /path/to/hourly-crypto && /usr/bin/python3 -m src.monitor --telegram >> logs/pipeline.log 2>&1
 ```
 
 After the run, `outputs/latest_trades.csv` contains the newest hour's BUY
 signals (top-5 by probability) for execution.
+
+### Monitoring & broker (bonus)
+
+```bash
+python -m src.monitor            # prints health numbers, writes outputs/monitor.html
+python -m src.monitor --telegram # + push to Telegram (export TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID)
+python -m src.broker             # build orders from latest_trades.csv (dry run, no keys)
+python -m src.broker --live --testnet   # place them on the Binance futures testnet
+```
+
+To make monitoring **live**: run `src.monitor --telegram` from the cron job
+right after the pipeline (see above) — every morning you get data freshness,
+RF test precision, open-signal count and portfolio vs benchmark; open
+`outputs/monitor.html` for a browser dashboard. `src.broker` signs real
+Binance fapi orders (`--live --mainnet` requires explicitly stating real
+money + `BINANCE_API_KEY`/`BINANCE_API_SECRET` env vars) — **the project
+itself only trades in simulation.**
 
 ### Docker
 
@@ -383,33 +414,35 @@ docker run --rm -v $PWD/data:/app/data -v $PWD/outputs:/app/outputs hourly-crypt
 
 ## 9. Rubric mapping
 
-| Rubric item                                                                        | Where                                                  |
-| ---------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Problem described, **new problem definition** (hourly, non-equity market)    | §1                                                    |
-| SOTA steps, findings, reproduction                                                 | §6, §8                                               |
-| **Lecture data sources/features** (Yahoo macro + classic TA features)        | §2–3                                                 |
-| 20+ new features (40)                                                              | §3                                                    |
-| New non-Yahoo/FRED source (Binance REST)                                           | §2                                                    |
-| >1M records (1.87M)                                                                | §2                                                    |
-| **One dataframe, feature sets defined**                                      | `src/transform.py`                                   |
-| 5+ new relevant features from transformations                                      | §3                                                    |
-| EDA: target, correlations, per-ticker analysis                                     | notebook §5–6                                        |
-| **Lecture models (DT, RF)** + >1 lecture model                               | §4                                                    |
-| Custom decision rule on higher-probability events                                  | threshold sweep                                        |
-| Hyper-parameter tuning                                                             | manual grids by val AUC                                |
-| New models (XGBoost, LogisticRegression)                                           | §4                                                    |
-| **Vector simulation** + approximate returns                                  | sim1–sim4                                             |
-| Two+ strategies (`sim1_…`, `sim2_…` per prediction)                          | `predictions_with_sims_*.parquet`                    |
-| Exact simulation with reinvestment & capital utilisation                           | sim5                                                   |
-| Profitability vs benchmark (CAGR/Sharpe/DD/rolling)                                | headline table, notebook §3                           |
-| Advanced features (stop-loss tested, proba sizing, top-5, entry timing)            | §5–6                                                 |
-| New strategy (long/short) + market-condition combination                           | sim3, regime ablation                                  |
-| Exceptional profitability vs benchmark                                             | +48.5% vs −37.4% (test)                               |
-| Deep exploratory analysis by ticker, debug wrong predictions                       | §6, notebook §6                                      |
-| **Notebook calls all `.py` functions, end-to-end workflow, latest trades** | `notebooks/01_end_to_end.ipynb`, `src/pipeline.py` |
-| Dependencies managed                                                               | `requirements.txt`                                   |
-| Cron re-run for latest data                                                        | §8                                                    |
-| Two regimes (file vs download)                                                     | §8                                                    |
-| Incremental loading, storage outside GitHub                                        | `download.py`, `.gitignore`                        |
-| Well-designed commented modules                                                    | `src/*`                                              |
-| Containerisation (bonus)                                                           | `Dockerfile`                                         |
+| Rubric item | Where |
+|---|---|
+| Problem described, **new problem definition** (hourly, non-equity market) | §1 |
+| SOTA steps, findings, reproduction | §6, §8 |
+| **Lecture data sources/features** (Yahoo macro + classic TA features) | §2–3 |
+| 20+ new features (40) | §3 |
+| New non-Yahoo/FRED source (Binance REST) | §2 |
+| >1M records (1.87M) | §2 |
+| **One dataframe, feature sets defined** | `src/transform.py` |
+| 5+ new relevant features from transformations | §3 |
+| EDA: target, correlations, per-ticker analysis | notebook §8–9 |
+| **Lecture models (DT, RF)** + >1 lecture model | §4 |
+| Custom decision rule on higher-probability events | threshold sweep |
+| Hyper-parameter tuning | manual grids by val AUC |
+| New models (XGBoost, LogisticRegression) | §4 |
+| **Vector simulation** + approximate returns | sim1–sim4 |
+| Two+ strategies (`sim1_…`, `sim2_…` per prediction) | `predictions_with_sims_*.parquet` |
+| Exact simulation with reinvestment & capital utilisation | sim5 |
+| Profitability vs benchmark (CAGR/Sharpe/DD/rolling returns) | headline table, notebook §4 (equity + rolling 30-day) |
+| Advanced features (stop-loss tested, proba sizing, top-5, entry timing) | §5–6 |
+| New strategy (long/short) + market-condition combination | sim3, regime ablation |
+| Exceptional profitability vs benchmark | +48.5% vs −37.4% (test) |
+| Deep exploratory analysis by ticker, debug wrong predictions | §6, notebook §9 |
+| **Notebook calls all `.py` functions, end-to-end workflow (download → transform → predict → simulate → latest trades)** | `notebooks/01_end_to_end.ipynb` §1–5, `src/pipeline.py` |
+| Dependencies managed | `requirements.txt` |
+| Cron re-run for latest data | §8 |
+| Two regimes (file vs download) | §8 |
+| Incremental loading, storage outside GitHub | `download.py`, `.gitignore` |
+| Well-designed commented modules | `src/*` |
+| Containerisation (bonus) | `Dockerfile` |
+| Broker API order placement (bonus) | `src/broker.py`, notebook §7 |
+| Monitoring / dashboard + Telegram (bonus) | `src/monitor.py`, notebook §6 |
